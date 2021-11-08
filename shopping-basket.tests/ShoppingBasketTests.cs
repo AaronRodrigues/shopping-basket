@@ -33,5 +33,12 @@ namespace shopping_basket.tests
             _shoppingBasket.Add("Butter");
             Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(0.80m));
         }
+
+        [Test]
+        public void ShouldTotalPriceOfBasketWithOneMilk()
+        {
+            _shoppingBasket.Add("Milk");
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(1.15m));
+        }
     }
 }

@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace shopping_basket
 {
     public class ShoppingBasket : IShoppingBasket
     {
-        private string _item;
+        private IList<string> _items;
+
+        public ShoppingBasket()
+        {
+            _items = new List<string>();
+        }
 
         public void Add(string item)
         {
-            _item = item;
+            _items.Add(item);
         }
 
         public int TotalItems()
@@ -18,11 +25,29 @@ namespace shopping_basket
 
         public decimal TotalPrice()
         {
-            if (_item == "Butter")
+            var itemsGrouped = _items
+                .GroupBy(x => x)
+                .ToDictionary(item => item.Key, itemCount => itemCount.Count());
+
+            var total = 0m;
+
+            foreach (var item in itemsGrouped)
             {
-                return 0.80m;
+                switch (item.Key)
+                {
+                    case "Bread":
+                        total += 1.0m;
+                        break;
+                    case "Butter":
+                        total += 0.80m;
+                        break;
+                    case "Milk":
+                        total += 1.15m;
+                        break;
+                }
             }
-            return 1;
+
+            return total;
         }
     }
 
