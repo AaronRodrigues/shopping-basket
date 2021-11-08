@@ -21,5 +21,15 @@ namespace shopping_basket.tests
             _shoppingBasket.Add(item);
             Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(expectedPrice));
         }
+
+        [Test]
+        public void ShouldReturn295WhenBasketContainsOneBreadOneButterAndOneMilk()
+        {
+            _shoppingBasket.Add("Bread");
+            _shoppingBasket.Add("Butter");
+            _shoppingBasket.Add("Milk");
+            Assert.That(_shoppingBasket.TotalItems(), Is.EqualTo(3));
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(2.95m));
+        }
     }
 }

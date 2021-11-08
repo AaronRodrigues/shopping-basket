@@ -20,7 +20,7 @@ namespace shopping_basket
 
         public int TotalItems()
         {
-            return 1;
+            return _items.Count;
         }
 
         public decimal TotalPrice()
