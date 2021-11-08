@@ -13,32 +13,13 @@ namespace shopping_basket.tests
             _shoppingBasket = new ShoppingBasket();
         }
         
-        [Test]
-        public void ShouldAddOneItemToShoppingBasket()
+        [TestCase("Bread", 1)]
+        [TestCase("Butter", 0.80)]
+        [TestCase("Milk", 1.15)]
+        public void ShouldEnsureOneOfEachItemCostsRight(string item, decimal expectedPrice)
         {
-            _shoppingBasket.Add("Bread");
-            Assert.That(_shoppingBasket.TotalItems(), Is.EqualTo(1));
-        }
-
-        [Test]
-        public void ShouldTotalPriceOfBasket()
-        {
-            _shoppingBasket.Add("Bread");
-            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(1));
-        }
-
-        [Test]
-        public void ShouldTotalPriceOfBasketWithOneButter()
-        {
-            _shoppingBasket.Add("Butter");
-            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(0.80m));
-        }
-
-        [Test]
-        public void ShouldTotalPriceOfBasketWithOneMilk()
-        {
-            _shoppingBasket.Add("Milk");
-            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(1.15m));
+            _shoppingBasket.Add(item);
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(expectedPrice));
         }
     }
 }
