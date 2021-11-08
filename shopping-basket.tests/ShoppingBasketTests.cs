@@ -26,5 +26,12 @@ namespace shopping_basket.tests
             _shoppingBasket.Add("Bread");
             Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(1));
         }
+
+        [Test]
+        public void ShouldTotalPriceOfBasketWithOneButter()
+        {
+            _shoppingBasket.Add("Butter");
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(0.80m));
+        }
     }
 }
