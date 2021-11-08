@@ -9,7 +9,12 @@ namespace shopping_basket
            
         }
 
-        public int Total()
+        public int TotalItems()
+        {
+            return 1;
+        }
+
+        public decimal TotalPrice()
         {
             return 1;
         }
@@ -18,6 +23,7 @@ namespace shopping_basket
     public interface IShoppingBasket
     {
         void Add(string item);
-        int Total();
+        int TotalItems();
+        decimal TotalPrice();
     }
 }
