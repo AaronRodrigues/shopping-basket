@@ -73,11 +73,4 @@ namespace shopping_basket
                 return discount;
             }
     }
-
-    public interface IShoppingBasket
-    {
-        void Add(string item);
-        int TotalItems();
-        decimal TotalPrice();
-    }
 }
