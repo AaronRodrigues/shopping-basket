@@ -40,7 +40,35 @@ namespace shopping_basket.tests
             _shoppingBasket.Add("Milk");
             _shoppingBasket.Add("Milk");
             Assert.That(_shoppingBasket.TotalItems(), Is.EqualTo(4));
-            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(3.45));
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(3.45m));
+        }
+
+        [Test]
+        public void Giventhebaskethas2Butterand2BreadwhenItotalthebasketthenthetotalshouldbe3Pounds10p()
+        {
+            _shoppingBasket.Add("Butter");
+            _shoppingBasket.Add("Butter");
+            _shoppingBasket.Add("Bread");
+            _shoppingBasket.Add("Bread");
+            Assert.That(_shoppingBasket.TotalItems(), Is.EqualTo(4));
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(3.10m));
+        }
+
+        [Test]
+        public void Giventhebaskethas2Butter1Breadand8MilkwhenItotalthebasketthenthetotalshouldbe9()
+        {
+            _shoppingBasket.Add("Butter");
+            _shoppingBasket.Add("Butter");
+            _shoppingBasket.Add("Bread");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            _shoppingBasket.Add("Milk");
+            Assert.That(_shoppingBasket.TotalPrice(), Is.EqualTo(9.0m));
         }
     }
 }

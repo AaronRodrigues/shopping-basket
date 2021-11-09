@@ -36,19 +36,41 @@ namespace shopping_basket
                 switch (item.Key)
                 {
                     case "Bread":
-                        total += 1.0m;
+                        total += item.Value * 1.0m;
                         break;
                     case "Butter":
-                        total += 0.80m;
+                        total += item.Value * 0.80m;
                         break;
                     case "Milk":
-                        total += item.Value == 4.0m ? 3.45m : 1.15m;
+                        total += item.Value * 1.15m;
                         break;
                 }
             }
 
-            return total;
+            var discountOnBread = ApplyBuy2ButterGetBreadAt50PercentOffDiscount(_items);
+            var discountOnMilk = Buy3Milkandgetthe4thmilkforfree(_items);
+            var discountedTotal = total - discountOnBread - discountOnMilk;
+            
+            return discountedTotal;
         }
+            public decimal ApplyBuy2ButterGetBreadAt50PercentOffDiscount(IList<string> _items)
+            {
+                var butterCount = _items.Count(x => x == "Butter");
+                var discountableItems = butterCount / 2;
+                var breadCount = _items.Count(x => x == "Bread");
+                var totalItemsToBeDiscounted =  Math.Min(breadCount, discountableItems);
+                var discount = totalItemsToBeDiscounted * 0.5m;
+                return discount;
+            }
+
+            public decimal Buy3Milkandgetthe4thmilkforfree(IList<string> _items)
+            {
+                var milkCount = _items.Count(x => x == "Milk");
+                var discountableItems = Math.Floor( milkCount/4m);
+                var totalItemsToBeDiscounted =  Math.Min(milkCount, discountableItems);
+                var discount = totalItemsToBeDiscounted * 1.15m;
+                return discount;
+            }
     }
 
     public interface IShoppingBasket
