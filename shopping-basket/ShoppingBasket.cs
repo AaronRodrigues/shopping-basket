@@ -42,7 +42,7 @@ namespace shopping_basket
                         total += 0.80m;
                         break;
                     case "Milk":
-                        total += 1.15m;
+                        total += item.Value == 4.0m ? 3.45m : 1.15m;
                         break;
                 }
             }
