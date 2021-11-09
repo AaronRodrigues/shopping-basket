@@ -48,12 +48,13 @@ namespace shopping_basket
             }
 
             var discountOnBread = ApplyBuy2ButterGetBreadAt50PercentOffDiscount(_items);
-            var discountOnMilk = Buy3Milkandgetthe4thmilkforfree(_items);
+            var discountOnMilk = ApplyBuy3MilkandGetthe4thmilkforfreeDiscount(_items);
             var discountedTotal = total - discountOnBread - discountOnMilk;
             
             return discountedTotal;
         }
-            public decimal ApplyBuy2ButterGetBreadAt50PercentOffDiscount(IList<string> _items)
+
+        private decimal ApplyBuy2ButterGetBreadAt50PercentOffDiscount(IList<string> _items)
             {
                 var butterCount = _items.Count(x => x == "Butter");
                 var discountableItems = butterCount / 2;
@@ -63,7 +64,7 @@ namespace shopping_basket
                 return discount;
             }
 
-            public decimal Buy3Milkandgetthe4thmilkforfree(IList<string> _items)
+        private decimal ApplyBuy3MilkandGetthe4thmilkforfreeDiscount(IList<string> _items)
             {
                 var milkCount = _items.Count(x => x == "Milk");
                 var discountableItems = Math.Floor( milkCount/4m);

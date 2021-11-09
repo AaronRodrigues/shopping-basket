@@ -23,7 +23,7 @@ namespace shopping_basket.tests
         }
 
         [Test]
-        public void ShouldReturn295WhenBasketContainsOneBreadOneButterAndOneMilk()
+        public void Giventhebaskethas1bread1butterand1milkwhenItotalthebasketthenthetotalshouldbe2Pounds95p()
         {
             _shoppingBasket.Add("Bread");
             _shoppingBasket.Add("Butter");
@@ -33,7 +33,7 @@ namespace shopping_basket.tests
         }
 
         [Test]
-        public void ShouldReturn345WhenFourMilkInBasket()
+        public void ShouldReturn3Pounds45pWhenFourMilkInBasket()
         {
             _shoppingBasket.Add("Milk");
             _shoppingBasket.Add("Milk");
